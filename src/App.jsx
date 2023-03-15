@@ -14,7 +14,8 @@ function App() {
     index,
     correctAnswer,
     error,
-    isModalOpen} = useContext(AppContext);
+    isModalOpen,
+    nextQuestion} = useContext(AppContext);
   const [count, setCount] = useState(0);
 
   let content;
@@ -28,8 +29,8 @@ function App() {
   } 
 
   if (questions.length === 0) return;
-  console.log(questions);
-  const {question, incorrect_answers, correct_answer} = questions[0];
+  // console.log(questions);
+  const {question, incorrect_answers, correct_answer} = questions[index];
   const answers = [...incorrect_answers, correct_answer];
 
   content = (
@@ -50,7 +51,7 @@ function App() {
             })}
           </div>
       </article>
-      <button className="next-question">Next Question</button>
+      <button className="next-question" onClick={nextQuestion}>Next Question</button>
     </section>
   );
 

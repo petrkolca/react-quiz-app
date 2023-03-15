@@ -47,6 +47,23 @@ const AppProvider = (props) => {
 
   }, [])
 
+
+  const nextQuestion = () => {
+    setIndex((oldIndex) => {
+      const index = oldIndex + 1;
+
+      if (index > questions.length - 1) {
+        // openModal
+        return 0;
+
+      } else {
+        return index;
+      }
+
+    })
+  }
+
+
   useEffect(() => {
     fetchQuestions(TEMP_API_URL);
     console.log('useEffect function init');
@@ -61,7 +78,8 @@ const AppProvider = (props) => {
       index,
       correctAnswer,
       error,
-      isModalOpen
+      isModalOpen,
+      nextQuestion
     }}>{props.children}</AppContext.Provider>
   )
 }
