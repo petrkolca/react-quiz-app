@@ -17,22 +17,22 @@ function App() {
     isModalOpen} = useContext(AppContext);
   const [count, setCount] = useState(0);
 
+  let content = <h1>Quiztopia App</h1>;
+
   if (isWaiting) {
-    return <SetupForm />
+    content = <SetupForm />
   } 
 
   if (loading) {
     // console.log('data: ', questions);
-    return (
-      <Preloader />
-    )
+    content = <Preloader />
   } 
 
   return (
     <>
       <GlobalStyles/>
       <main>
-        <h1>Quiztopia App</h1>
+        {content}
       </main>
     </>
   )

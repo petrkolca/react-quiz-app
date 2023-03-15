@@ -1,8 +1,8 @@
+import { StyledPreloader } from "./styles/Preloadere.styled";
+
 const Preloader = () => {
   return (
-    <div>
-      <h1>Preloading</h1>
-    </div>
+    <StyledPreloader />
   );
 }
 
