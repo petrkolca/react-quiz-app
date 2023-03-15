@@ -6,8 +6,8 @@ export const StyledPreloader = styled.div`
   margin: 0 auto;
   /* margin-top: 10rem; */
   border-radius: 50%;
-  border: 3px solid #CBE1C4;
-  border-top-color: #43B02A;
+  border: 3px solid var(--clr-primary-6);
+  border-top-color: var(--clr-primary-5);
   animation: spinner 0.6s linear infinite;
 
   @keyframes spinner {

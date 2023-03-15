@@ -24,10 +24,13 @@ function App() {
   } 
 
   if (loading) {
-    // console.log('data: ', questions);
     content = <Preloader />
   } 
 
+  // console.log('data: ', questions);
+  const [question, incorrect_answers, correct_answer] = questions[0];
+  const answers = [...incorrect_answers, correct_answer];
+  
   return (
     <>
       <GlobalStyles/>
