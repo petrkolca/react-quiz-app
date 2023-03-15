@@ -15,8 +15,8 @@ export const GlobalStyles = createGlobalStyle`
     /* primary/main color */
     --clr-primary-5: #43B02A;
     /* lighter shades of primary color */
-    --clr-primary-6: #CBE1C4;
-    --clr-primary-7: hsl(205, 90%, 76%);
+    --clr-primary-6: #A2D897;
+    --clr-primary-7: #CBE1C4;
     --clr-primary-8: hsl(205, 86%, 81%);
     --clr-primary-9: hsl(205, 90%, 88%);
     --clr-primary-10: hsl(205, 100%, 96%);
@@ -40,7 +40,7 @@ export const GlobalStyles = createGlobalStyle`
     --clr-black: #222;
     --transition: all 0.3s linear;
     --spacing: 0.1rem;
-    --radius: 0.25rem;
+    --radius: 0.5rem;
     --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     --max-width: 1170px;
@@ -137,6 +137,7 @@ export const GlobalStyles = createGlobalStyle`
     align-items: center;
   }
 
+  // Quiz Card
   .quiz {
     width: 90vw;
     max-width: var(--max-width);
@@ -164,4 +165,58 @@ export const GlobalStyles = createGlobalStyle`
     color: var(--clr-primary-5);
   }
 
+  .answer-btn {
+    display: block;
+    width: 100%;
+    margin: 0.75rem auto;
+    background: var(--clr-grey-4);
+    border-radius: var(--radius);
+    border-color: transparent;
+    color: var(--clr-grey-1);
+    letter-spacing: var(--spacing);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.75rem 0;
+    transition: var(--transition);
+  }
+  @media screen and (min-width: 576px) {
+    .answer-btn {
+      max-width: 60%;
+    }
+  }
+  .answer-btn:hover {
+    background: var(--clr-primary-7);
+  }
+  .correct-answers {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    text-align: right;
+    text-transform: capitalize;
+    letter-spacing: var(--spacing);
+    color: var(--clr-green-dark);
+  }
+  .next-question,
+  .close-btn,
+  .submit-btn {
+    border-radius: var(--radius);
+    border-color: transparent;
+    padding: 0.5rem 0.85rem;
+    display: block;
+    width: auto;
+    max-width: 35%;
+    margin-left: auto;
+    margin-top: 2rem;
+    text-transform: capitalize;
+    font-weight: 700;
+    letter-spacing: var(--spacing);
+    font-size: 1rem;
+    background: var(--clr-primary-5);
+    color: var(--clr-white);
+    transition: var(--transition);
+    cursor: pointer;
+  }
+  .next-question:hover {
+    background: var(--clr-primary-6);
+    color: var(--clr-primary-5);
+  }
 `

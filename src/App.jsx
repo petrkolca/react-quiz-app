@@ -39,7 +39,18 @@ function App() {
       </p>
       <article className="container">
           <h2 dangerouslySetInnerHTML={{__html: question}} />
+          <div className="btn-ctn">
+            {answers.map((answer, index) => {
+              return (
+                <button
+                  key={index} 
+                  className="answer-btn"
+                  dangerouslySetInnerHTML={{__html: answer}} />
+              )
+            })}
+          </div>
       </article>
+      <button className="next-question">Next Question</button>
     </section>
   );
 
