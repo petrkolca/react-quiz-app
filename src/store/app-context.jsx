@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 
 // temporary QUIZ API for app build
 const TEMP_API_URL = "https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple";
-
+const API_URL = "https://opentdb.com/api.php?amount=50";
 
 const AppContext = React.createContext();
 
@@ -18,7 +18,7 @@ const AppProvider = (props) => {
   const fetchQuestions = useCallback(async (API_URL) => {
     try {
       setLoading(true);
-      setIsWaiting(true);
+      setIsWaiting(false);
 
       const response = await fetch(API_URL);
 
@@ -27,16 +27,23 @@ const AppProvider = (props) => {
       }
   
       const fetchedData = await response.json();
-      // console.log('data: ', fetchedData);
-      // set questions array
-      setQuestions(fetchedData);
+      const data = fetchedData.results;
+      // console.log('data pk: ', data);
+
+      if (data.length > 0) {
+        
+        // set questions array
+        setQuestions(data);
+        setLoading(false);
+        setError(false);
+      }
 
     } catch (error) {
 
+      setIsWaiting(true);
       setError(error.message);
     }
 
-    setIsWaiting(false);
 
   }, [])
 

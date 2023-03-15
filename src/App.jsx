@@ -22,7 +22,7 @@ function App() {
   } 
 
   if (loading) {
-    console.log(questions);
+    // console.log('data: ', questions);
     return (
       <Preloader />
     )
