@@ -13,7 +13,7 @@ const AppProvider = (props) => {
   const [index, setIndex] = useState(0);
   const [correctAnswer, setCorrectAnswer] = useState(0);
   const [error, setError] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const fetchQuestions = useCallback(async (API_URL) => {
     try {

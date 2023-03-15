@@ -36,28 +36,30 @@ function App() {
   const {question, incorrect_answers, correct_answer} = questions[index];
   const answers = [...incorrect_answers, correct_answer];
 
-  content = (
-    <section className="quiz">
-      <p className="correct-answers">
-        correct answer : {correctAnswer}/{index}
-      </p>
-      <article className="container">
-          <h2 dangerouslySetInnerHTML={{__html: question}} />
-          <div className="btn-ctn">
-            {answers.map((answer, index) => {
-              return (
-                <button
-                  key={index} 
-                  className="answer-btn"
-                  onClick={() => checkAnswer(correct_answer === answer)}
-                  dangerouslySetInnerHTML={{__html: answer}} />
-              )
-            })}
-          </div>
-      </article>
-      <button className="next-question" onClick={nextQuestion}>Next Question</button>
-    </section>
-  );
+  if(!isWaiting && !loading) {
+    content = (
+      <section className="quiz">
+        <p className="correct-answers">
+          correct answer : {correctAnswer}/{index}
+        </p>
+        <article className="container">
+            <h2 dangerouslySetInnerHTML={{__html: question}} />
+            <div className="btn-ctn">
+              {answers.map((answer, index) => {
+                return (
+                  <button
+                    key={index} 
+                    className="answer-btn"
+                    onClick={() => checkAnswer(correct_answer === answer)}
+                    dangerouslySetInnerHTML={{__html: answer}} />
+                )
+              })}
+            </div>
+        </article>
+        <button className="next-question" onClick={() => nextQuestion()}>Next Question</button>
+      </section>
+    );
+  }
 
   return (
     <Fragment>
