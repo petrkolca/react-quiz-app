@@ -1,16 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { useContext, useState } from 'react'
+import { AppContext } from './store/app-context'
 import { GlobalStyles } from './components/styles/GlobalStyles'
 
 function App() {
+  const ctx = useContext(AppContext);
   const [count, setCount] = useState(0)
 
   return (
     <>
       <GlobalStyles/>
-      <div className="main">
+      <main>
         <h1>Quiztopia App</h1>
-      </div>
+      </main>
     </>
   )
 }
