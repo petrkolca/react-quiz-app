@@ -13,7 +13,7 @@ const AppProvider = (props) => {
   const [index, setIndex] = useState(0);
   const [correctAnswer, setCorrectAnswer] = useState(0);
   const [error, setError] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
 
   const fetchQuestions = useCallback(async (API_URL) => {
     try {
@@ -53,7 +53,7 @@ const AppProvider = (props) => {
       const index = oldIndex + 1;
 
       if (index > questions.length - 1) {
-        // openModal
+        openModal();
         return 0;
 
       } else {
@@ -70,6 +70,17 @@ const AppProvider = (props) => {
     }
     // execute to the next question
     nextQuestion();
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsWaiting(true); // go back to the form
+    setCorrectAnswer(0);
+    setIsModalOpen(false);
+
   };
 
 
@@ -89,7 +100,8 @@ const AppProvider = (props) => {
       error,
       isModalOpen,
       nextQuestion,
-      checkAnswer
+      checkAnswer,
+      closeModal
     }}>{props.children}</AppContext.Provider>
   )
 }

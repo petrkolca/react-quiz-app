@@ -214,9 +214,10 @@ export const GlobalStyles = createGlobalStyle`
     color: var(--clr-white);
     transition: var(--transition);
     cursor: pointer;
-  }
-  .next-question:hover {
-    background: var(--clr-primary-6);
-    color: var(--clr-primary-5);
+
+    &:hover {
+      background: var(--clr-primary-6);
+      color: var(--clr-primary-5);
+    }
   }
 `

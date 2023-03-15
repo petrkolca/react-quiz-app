@@ -2,6 +2,7 @@ import { Fragment, useContext, useState } from 'react'
 import { AppContext } from './store/app-context'
 import SetupForm from './components/SetupForm';
 import Preloader from './components/Preloader';
+import Modal from './components/Modal';
 
 import { GlobalStyles } from './components/styles/GlobalStyles'
 
@@ -16,7 +17,8 @@ function App() {
     error,
     isModalOpen,
     nextQuestion,
-    checkAnswer} = useContext(AppContext);
+    checkAnswer,
+    closeModal} = useContext(AppContext);
   const [count, setCount] = useState(0);
 
   let content;
@@ -60,6 +62,7 @@ function App() {
   return (
     <Fragment>
       <GlobalStyles/>
+      <Modal />
       <main>
         {content}
       </main>
