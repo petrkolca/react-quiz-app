@@ -1,4 +1,4 @@
-import { StyledPreloader } from "./styles/Preloadere.styled";
+import { StyledPreloader } from "./styles/Preloader.styled";
 
 const Preloader = () => {
   return (

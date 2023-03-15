@@ -137,4 +137,31 @@ export const GlobalStyles = createGlobalStyle`
     align-items: center;
   }
 
+  .quiz {
+    width: 90vw;
+    max-width: var(--max-width);
+    margin: 4rem auto;
+    background: var(--clr-white);
+    border-radius: var(--radius);
+    padding: 3rem;
+  }
+  .quiz-small {
+    max-width: 500px;
+  }
+  .container h2 {
+    margin-bottom: 2rem;
+    text-align: center;
+    line-height: 1.5;
+    text-transform: none;
+  }
+
+  .correct-answers {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    text-align: right;
+    text-transform: capitalize;
+    letter-spacing: var(--spacing);
+    color: var(--clr-primary-5);
+  }
+
 `
