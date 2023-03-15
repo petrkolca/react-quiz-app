@@ -15,7 +15,8 @@ function App() {
     correctAnswer,
     error,
     isModalOpen,
-    nextQuestion} = useContext(AppContext);
+    nextQuestion,
+    checkAnswer} = useContext(AppContext);
   const [count, setCount] = useState(0);
 
   let content;
@@ -46,6 +47,7 @@ function App() {
                 <button
                   key={index} 
                   className="answer-btn"
+                  onClick={() => checkAnswer(correct_answer === answer)}
                   dangerouslySetInnerHTML={{__html: answer}} />
               )
             })}

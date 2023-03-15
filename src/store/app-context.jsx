@@ -61,7 +61,16 @@ const AppProvider = (props) => {
       }
 
     })
-  }
+  };
+
+
+  const checkAnswer = (value) => {
+    if (value) {
+      setCorrectAnswer((oldState) => oldState + 1)
+    }
+    // execute to the next question
+    nextQuestion();
+  };
 
 
   useEffect(() => {
@@ -79,7 +88,8 @@ const AppProvider = (props) => {
       correctAnswer,
       error,
       isModalOpen,
-      nextQuestion
+      nextQuestion,
+      checkAnswer
     }}>{props.children}</AppContext.Provider>
   )
 }
