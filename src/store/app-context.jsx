@@ -39,16 +39,16 @@ const AppProvider = (props) => {
     try {
       setLoading(true);
       setIsWaiting(false);
-
+  
       const response = await fetch(API_URL);
-
+  
       if(!response.ok) {
         throw new Error('Something went wrong!');
       }
   
       const fetchedData = await response.json();
       const data = fetchedData.results;
-      
+  
       if (data.length > 0) {
         
         // set questions array
@@ -56,14 +56,17 @@ const AppProvider = (props) => {
         setLoading(false);
         setIsWaiting(false);
         setError(false);
+
+        // console.log('data: ', data);
         
-        console.log('data pk: ', data);
+      } else {
+        setLoading(false);
+        setIsWaiting(true);
+        setError(true);
       }
-
+  
     } catch (error) {
-
-      setIsWaiting(true);
-      setError(error.message);
+      console.log("Error fetching questions: ", error.message);
     }
 
 

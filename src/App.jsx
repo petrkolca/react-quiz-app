@@ -21,8 +21,8 @@ function App() {
     closeModal} = useContext(AppContext);
   const [count, setCount] = useState(0);
 
-  console.log("isWaiting: ", isWaiting);
-  console.log("loading: ", loading);
+  // console.log("isWaiting: ", isWaiting);
+  // console.log("loading: ", loading);
 
   let content;
 
