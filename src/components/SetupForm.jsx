@@ -3,51 +3,73 @@ import { AppContext } from "../store/app-context";
 import { StyledFormCtn } from "./styles/SetupForm.styled";
 
 const SetupForm = () => {
-  const ctx = useContext(AppContext);
+  const {quiz, handleChange, handleSubmit, error} = useContext(AppContext);
 
   return (
-    <StyledFormCtn>
-      <h2>Setup Form</h2>
-      <form action="">
+    <div className="quiz quiz-small">
+      <h2>Setup Quiztopia</h2>
+      <StyledFormCtn action="">
+        {/* {amount} */}
         <div className="form-control">
-          <label htmlFor="number-questions">Nubmber of questions</label>
+          <label htmlFor="amount">Nubmber of questions</label>
           <input 
-            name="number-questions" 
-            id="number-questions"
+            name="amount" 
+            id="amount"
             className="form-input" 
             type="number"
-            placeholder="eg. 10" />
+            placeholder="eg. 10"
+            value={quiz.amount}
+            onChange={handleChange}
+            min={1}
+            max={50} />
+            {error && (
+              <p className="error">Can't generate questions, please try different amount</p>
+            )}
         </div>
+        {/* {Category} */}
         <div className="form-control">
           <label htmlFor="category">Category</label>
-            <select 
-              name="category" 
-              id="category"
-              className="form-input" 
-              placeholder="Pick category">
-                <option value="" hidden selected>Pick category</option>
-                <option value="1">Sport</option>
-                <option value="2">Culture</option>
-                <option value="3">Politics</option>
-                <option value="4">Economy</option>
-            </select>
+          <select 
+            name="category" 
+            id="category"
+            className="form-input" 
+            placeholder="Pick category"
+            value={quiz.category}
+            onChange={handleChange}
+            >
+              <option value="" hidden selected>Pick category</option>
+              <option value="Sport">Sport</option>
+              <option value="Celebrities">Celebrities</option>
+              <option value="Politics">Politics</option>
+              <option value="History">History</option>
+          </select>
+          {error && (
+              <p className="error">Can't generate questions, please select different category</p>
+          )}
         </div>
+        {/* {Difficulty} */}
         <div className="form-control">
           <label htmlFor="difficulty">Difficulty</label>
             <select 
               name="difficulty" 
               id="difficulty"
               className="form-input" 
-              placeholder="Pick difficulty">
+              placeholder="Pick difficulty"
+              value={quiz.difficulty}
+              onChange={handleChange}
+              >
                 <option value="" hidden selected>Pick difficulty</option>
-                <option value="1">Easy</option>
-                <option value="2">Medium</option>
-                <option value="3">Hard</option>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
             </select>
         </div>
+        {error && (
+              <p className="error">Can't generate questions, please select different difficulty</p>
+          )}
         <button className="submit-btn" type="submit">Start</button>
-      </form>
-    </StyledFormCtn>
+      </StyledFormCtn>
+    </div>
   );
 }
 

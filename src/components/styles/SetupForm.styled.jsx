@@ -1,11 +1,6 @@
 import styled from "styled-components";
 
 export const StyledFormCtn = styled.div`
-  background-color: var(--clr-white);
-  padding: 2rem;
-  border-radius: var(--radius);
-  width: 100%;
-  max-width: 25rem;
   
   h2 {
     margin-bottom: 2rem;

@@ -6,6 +6,13 @@ const API_URL = "https://opentdb.com/api.php?amount=50";
 
 const AppContext = React.createContext();
 
+// values in object are matching API query parameters
+const quizInitialSetupValues = {
+  amount: 10,
+  category: 'Sport',
+  difficulty: 'easy',
+}
+
 const AppProvider = (props) => {
   const [isWaiting, setIsWaiting] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -13,6 +20,7 @@ const AppProvider = (props) => {
   const [index, setIndex] = useState(0);
   const [correctAnswer, setCorrectAnswer] = useState(0);
   const [error, setError] = useState(false);
+  const [quiz, setQuiz] = useState(quizInitialSetupValues);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const fetchQuestions = useCallback(async (API_URL) => {
@@ -84,10 +92,20 @@ const AppProvider = (props) => {
 
   };
 
+  const handleChange = (e) => {
+    console.log(e);
+    
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+  }
+
 
   useEffect(() => {
     fetchQuestions(TEMP_API_URL);
-    console.log('useEffect function init');
+    // console.log('useEffect function init');
   
   }, [fetchQuestions]);
 
@@ -102,7 +120,10 @@ const AppProvider = (props) => {
       isModalOpen,
       nextQuestion,
       checkAnswer,
-      closeModal
+      closeModal,
+      quiz,
+      handleChange,
+      handleSubmit
     }}>{props.children}</AppContext.Provider>
   )
 }
