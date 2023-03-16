@@ -9,8 +9,8 @@ const AppContext = React.createContext();
 // values in object are matching API query parameters
 const quizInitialSetupValues = {
   amount: 10,
-  category: 'Sport',
-  difficulty: 'easy',
+  category: "Sport",
+  difficulty: "easy",
 }
 
 const AppProvider = (props) => {
@@ -93,8 +93,13 @@ const AppProvider = (props) => {
   };
 
   const handleChange = (e) => {
-    console.log(e);
-    
+    const inputName = e.target.name;
+    const inputValue = e.target.value;
+
+    setQuiz({
+      ...quiz, 
+      [inputName] : inputValue
+    });
   }
 
   const handleSubmit = (e) => {

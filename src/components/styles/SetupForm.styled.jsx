@@ -41,7 +41,10 @@ export const StyledFormCtn = styled.div`
     }
   }
   .error {
+    display: block;
+    font-size: 0.85rem;
     color: var(--clr-red-dark);
+    margin-top: 0.15rem;
     text-transform: capitalize;
   }
   .submit-btn {

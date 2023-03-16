@@ -5,6 +5,8 @@ import { StyledFormCtn } from "./styles/SetupForm.styled";
 const SetupForm = () => {
   const {quiz, handleChange, handleSubmit, error} = useContext(AppContext);
 
+  // console.log('quiz values: ', quiz);
+
   return (
     <div className="quiz quiz-small">
       <h2>Setup Quiztopia</h2>
@@ -37,7 +39,7 @@ const SetupForm = () => {
             value={quiz.category}
             onChange={handleChange}
             >
-              <option value="" hidden selected>Pick category</option>
+              <option value="" hidden defaultValue>Pick category</option>
               <option value="Sport">Sport</option>
               <option value="Celebrities">Celebrities</option>
               <option value="Politics">Politics</option>
@@ -50,23 +52,23 @@ const SetupForm = () => {
         {/* {Difficulty} */}
         <div className="form-control">
           <label htmlFor="difficulty">Difficulty</label>
-            <select 
-              name="difficulty" 
-              id="difficulty"
-              className="form-input" 
-              placeholder="Pick difficulty"
-              value={quiz.difficulty}
-              onChange={handleChange}
-              >
-                <option value="" hidden selected>Pick difficulty</option>
-                <option value="easy">Easy</option>
-                <option value="medium">Medium</option>
-                <option value="hard">Hard</option>
-            </select>
-        </div>
-        {error && (
+          <select 
+            name="difficulty" 
+            id="difficulty"
+            className="form-input" 
+            placeholder="Pick difficulty"
+            value={quiz.difficulty}
+            onChange={handleChange}
+            >
+              <option value="" hidden defaultValue>Pick difficulty</option>
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+          </select>
+          {error && (
               <p className="error">Can't generate questions, please select different difficulty</p>
           )}
+        </div>
         <button className="submit-btn" type="submit">Start</button>
       </StyledFormCtn>
     </div>
