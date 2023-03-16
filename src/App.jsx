@@ -40,12 +40,25 @@ function App() {
     if (questions.length === 0) return;
     // console.log(questions);
     const {question, incorrect_answers, correct_answer} = questions[index];
-    const answers = [...incorrect_answers, correct_answer];
+    // const answers = [...incorrect_answers, correct_answer];
+
+    // generating random answers array with correct_answer in random spot
+    let answers = [...incorrect_answers];
+    const random_numb = Math.floor(Math.random() * 4);
+    if (random_numb === 3) {
+      // if last index then insert to the end of array
+      answers.push(correct_answer)
+    } else {
+      // insert a random incorrect answer at the random index into the answers array
+      answers.push(answers[random_numb]);
+      // replacing the random answer at the random index with the correct_answer. 
+      answers[random_numb] = correct_answer;
+    }
 
     content = (
       <section className="quiz">
         <p className="correct-answers">
-          correct answer : {correctAnswer}/{index}
+          correct answer : {correctAnswer}/{questions.length - (questions.length - index) === 0 ? questions.length : questions.length - (questions.length - index)}
         </p>
         <article className="container">
             <h2 dangerouslySetInnerHTML={{__html: question}} />
