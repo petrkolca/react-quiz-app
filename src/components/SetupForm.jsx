@@ -3,10 +3,10 @@ import { AppContext } from "../store/app-context";
 import { StyledFormCtn } from "./styles/SetupForm.styled";
 
 const SetupForm = () => {
-  const {quiz, handleChange, handleSubmit, error} = useContext(AppContext);
+  const {categories, quiz, handleChange, handleSubmit, error} = useContext(AppContext);
+  // const category_names_arr = Object.keys(categories);
 
-  // console.log('quiz values: ', quiz);
-
+  // console.log(category_names_arr);
   return (
     <div className="quiz quiz-small">
       <h2>Setup Quiztopia</h2>
@@ -40,10 +40,9 @@ const SetupForm = () => {
             onChange={handleChange}
             >
               <option value="" hidden defaultValue>Pick category</option>
-              <option value="Sport">Sport</option>
-              <option value="Celebrities">Celebrities</option>
-              <option value="Politics">Politics</option>
-              <option value="History">History</option>
+              {categories.map((category, index) => (
+                <option key={index} value={category}>{category}</option>
+              ))}
           </select>
           {error && (
               <p className="error">Can't generate questions, please select different category</p>

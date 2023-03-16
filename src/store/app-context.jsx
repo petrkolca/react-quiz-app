@@ -4,23 +4,26 @@ import React, { useState, useEffect, useCallback } from "react";
 // const TEMP_API_URL = "https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple";
 const API_END_POINT = "https://opentdb.com/api.php?";
 
-const CATEGORY_NUMBERS_OBJ = {
+const category_names_obj = {
   Sport : 21,
   Celebrities : 26,
   Politics : 24,
   History : 23,
 }
+const firstCategory = Object.keys(category_names_obj)[0];
+const firstCategoryString = firstCategory.toString();
 
 const AppContext = React.createContext();
 
 // values in object are matching API query parameters
 const quizInitialSetupValues = {
   amount: 10,
-  category: "Sport",
+  category: firstCategoryString,
   difficulty: "easy",
 }
 
 const AppProvider = (props) => {
+  const [categories, setCategories] = useState(Object.keys(category_names_obj));
   const [isWaiting, setIsWaiting] = useState(true);
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState([]);
@@ -29,6 +32,8 @@ const AppProvider = (props) => {
   const [error, setError] = useState(false);
   const [quiz, setQuiz] = useState(quizInitialSetupValues);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // console.log(categories)
 
   const fetchQuestions = async (API_URL) => {
     try {
@@ -114,7 +119,7 @@ const AppProvider = (props) => {
     e.preventDefault();
     const {amount, category, difficulty} = quiz;
 
-    const CUSTOM_URL = `${API_END_POINT}amount=${amount}&category=${CATEGORY_NUMBERS_OBJ[category]}&difficulty=${difficulty}&type=multiple`;
+    const CUSTOM_URL = `${API_END_POINT}amount=${amount}&category=${category_names_obj[category]}&difficulty=${difficulty}&type=multiple`;
     fetchQuestions(CUSTOM_URL);
   }
 
@@ -127,6 +132,7 @@ const AppProvider = (props) => {
 
   return (
     <AppContext.Provider value={{
+      categories,
       isWaiting,
       loading,
       questions,
