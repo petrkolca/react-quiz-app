@@ -27,7 +27,7 @@ export const GlobalStyles = createGlobalStyle`
     /* grey used for paragraphs */
     --clr-grey-2: #909498;
     --clr-grey-3: #B1BAC6;
-    --clr-grey-6: hsl(209, 23%, 60%);
+    --clr-grey-6: #777777;
     --clr-grey-7: hsl(211, 27%, 70%);
     --clr-grey-8: hsl(210, 31%, 80%);
     --clr-grey-9: hsl(212, 33%, 89%);
@@ -219,5 +219,9 @@ export const GlobalStyles = createGlobalStyle`
       background: var(--clr-primary-6);
       color: var(--clr-primary-5);
     }
+  }
+
+  .close-btn {
+    margin-right: auto;
   }
 `

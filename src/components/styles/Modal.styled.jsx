@@ -32,7 +32,4 @@ export const StyledModal = styled.div`
     font-size: 1.5rem;
     text-transform: none;
   }
-  .close-btn {
-    margin-right: auto;
-  }
 `

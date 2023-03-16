@@ -35,6 +35,7 @@ const AppProvider = (props) => {
         // set questions array
         setQuestions(data);
         setLoading(false);
+        setIsWaiting(true);
         setError(false);
       }
 
