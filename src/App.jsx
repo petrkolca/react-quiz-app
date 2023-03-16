@@ -21,6 +21,9 @@ function App() {
     closeModal} = useContext(AppContext);
   const [count, setCount] = useState(0);
 
+  console.log("isWaiting: ", isWaiting);
+  console.log("loading: ", loading);
+
   let content;
 
   if (isWaiting) {
@@ -31,12 +34,14 @@ function App() {
     content = <Preloader />;
   } 
 
-  if (questions.length === 0) return;
-  // console.log(questions);
-  const {question, incorrect_answers, correct_answer} = questions[index];
-  const answers = [...incorrect_answers, correct_answer];
-
+  
   if(!isWaiting && !loading) {
+    
+    if (questions.length === 0) return;
+    // console.log(questions);
+    const {question, incorrect_answers, correct_answer} = questions[index];
+    const answers = [...incorrect_answers, correct_answer];
+
     content = (
       <section className="quiz">
         <p className="correct-answers">

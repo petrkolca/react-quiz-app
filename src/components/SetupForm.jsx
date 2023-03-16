@@ -10,7 +10,7 @@ const SetupForm = () => {
   return (
     <div className="quiz quiz-small">
       <h2>Setup Quiztopia</h2>
-      <StyledFormCtn action="">
+      <StyledFormCtn>
         {/* {amount} */}
         <div className="form-control">
           <label htmlFor="amount">Nubmber of questions</label>
@@ -69,7 +69,7 @@ const SetupForm = () => {
               <p className="error">Can't generate questions, please select different difficulty</p>
           )}
         </div>
-        <button className="submit-btn" type="submit">Start</button>
+        <button className="submit-btn" type="submit" onClick={handleSubmit}>Start</button>
       </StyledFormCtn>
     </div>
   );

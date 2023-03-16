@@ -1,8 +1,15 @@
 import React, { useState, useEffect, useCallback } from "react";
 
 // temporary QUIZ API for app build
-const TEMP_API_URL = "https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple";
-const API_URL = "https://opentdb.com/api.php?amount=50";
+// const TEMP_API_URL = "https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple";
+const API_END_POINT = "https://opentdb.com/api.php?";
+
+const CATEGORY_NUMBERS_OBJ = {
+  Sport : 21,
+  Celebrities : 26,
+  Politics : 24,
+  History : 23,
+}
 
 const AppContext = React.createContext();
 
@@ -23,7 +30,7 @@ const AppProvider = (props) => {
   const [quiz, setQuiz] = useState(quizInitialSetupValues);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const fetchQuestions = useCallback(async (API_URL) => {
+  const fetchQuestions = async (API_URL) => {
     try {
       setLoading(true);
       setIsWaiting(false);
@@ -36,15 +43,16 @@ const AppProvider = (props) => {
   
       const fetchedData = await response.json();
       const data = fetchedData.results;
-      // console.log('data pk: ', data);
-
+      
       if (data.length > 0) {
         
         // set questions array
         setQuestions(data);
         setLoading(false);
-        setIsWaiting(true);
+        setIsWaiting(false);
         setError(false);
+        
+        console.log('data pk: ', data);
       }
 
     } catch (error) {
@@ -54,7 +62,7 @@ const AppProvider = (props) => {
     }
 
 
-  }, [])
+  };
 
 
   const nextQuestion = () => {
@@ -104,15 +112,18 @@ const AppProvider = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+    const {amount, category, difficulty} = quiz;
+
+    const CUSTOM_URL = `${API_END_POINT}amount=${amount}&category=${CATEGORY_NUMBERS_OBJ[category]}&difficulty=${difficulty}&type=multiple`;
+    fetchQuestions(CUSTOM_URL);
   }
 
 
-  useEffect(() => {
-    fetchQuestions(TEMP_API_URL);
-    // console.log('useEffect function init');
+  // useEffect(() => {
+  //   fetchQuestions(TEMP_API_URL);
+  //   // console.log('useEffect function init');
   
-  }, [fetchQuestions]);
+  // }, [fetchQuestions]);
 
   return (
     <AppContext.Provider value={{
